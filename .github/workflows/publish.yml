@@ -27,9 +27,11 @@ jobs:
           fi
 
       - name: Build project
+        working-directory: ExampleLibrary
         run: dotnet build ExampleLibrary.sln --configuration Release /p:Version=$VERSION /p:Platform="Any CPU"
 
       - name: Pack
+        working-directory: ExampleLibrary
         run: dotnet pack ExampleLibrary.sln --configuration Release --output nupkgs /p:Version=$VERSION /p:Platform="Any CPU"
 
       - name: Publish NuGet packages
