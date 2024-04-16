@@ -16,6 +16,9 @@ jobs:
           dotnet-version: '6.0.*'  # Change this to the .NET version you're using
 
       - name: Read version from version.props
+        run: cd ExampleLibrary
+
+      - name: Read version from version.props
         run: |
           if [[ "${GITHUB_REF}" == "refs/heads/preview" ]]; then
             version=$(grep -oP '<Version>\K[^<]+' common.props)
